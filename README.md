@@ -2,6 +2,8 @@
 
 Site showing `.md` files as `html` pages
 
+https://devmanopedia.herokuapp.com/
+
 # How to install
 
 Python 3 should be already installed. Then use pip (or pip3 if there is
