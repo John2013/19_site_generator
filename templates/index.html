@@ -1,0 +1,27 @@
+{% extends "_layouts/default.html" %}
+{% block title %}Главная страница - Генератор сайтов{% endblock %}
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <section class="col articles-map">
+        <h1>Список статей</h1>
+        <ul class="articles-map__sections-list">
+          {% for section in sections -%}
+            {% if section.articles -%}
+              <li class="articles-map__section">
+                <span class="articles-map__section-title">{{ section.name }}</span>
+                <ul class="articles-map__section-articles">
+                  {% for article in section.articles -%}
+                    <li class="articles-map__article">
+                      <a href="{{ article.link }}" class="articles-map__article-name">{{ article.name }}</a>
+                    </li>
+                  {%- endfor %}
+                </ul>
+              </li>
+            {%- endif %}
+          {%- endfor %}
+        </ul>
+      </section>
+    </div>
+  </div>
+{% endblock %}
