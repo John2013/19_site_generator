@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from flaskext.markdown import Markdown
+from werkzeug.contrib.fixers import ProxyFix
 
 import articles
 
@@ -30,5 +31,6 @@ def article_page(section_name, article_name):
     )
 
 
+app.wsgi_app = ProxyFix(app.wsgi_app)
 if __name__ == "__main__":
     app.run()
