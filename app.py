@@ -2,7 +2,7 @@ from flask import Flask, render_template
 from flaskext.markdown import Markdown
 from werkzeug.contrib.fixers import ProxyFix
 
-import articles
+from articles import get_topics, read_config, get_article
 
 app = Flask(__name__)
 Markdown(app)
@@ -11,23 +11,22 @@ Markdown(app)
 @app.route("/")
 @app.route("/index")
 def index():
-    sections = articles.get_sections()
-    return render_template("index.html", sections=sections)
+    config = read_config()
+    topics = get_topics(config)
+    return render_template("index.html", topics=topics)
 
 
-@app.route("/articles/<section_name>/<article_name>")
-def article_page(section_name, article_name):
-    sections = articles.get_sections()
-    article = articles.find_article(sections, section_name, article_name)
-    if "_" in section_name:
-        _, section_name = section_name.split("_", 1)
-    else:
-        section_name = section_name
+@app.route("/<topic_dir>/<article_filename>")
+def article_page(topic_dir, article_filename):
+    article_source = '{}/{}'.format(topic_dir, article_filename)
+    config = read_config()
+    topics = get_topics(config)
+    article = get_article(config, article_source)
+
     return render_template(
         "article.html",
         article=article,
-        section_name=section_name,
-        sections=sections
+        topics=topics
     )
 
 

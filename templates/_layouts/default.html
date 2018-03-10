@@ -29,16 +29,16 @@
           <li class="nav-item active">
             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
           </li>
-          {% for section in sections %}
-            {% if section.articles %}
+          {% for topic in topics %}
+            {% if topic.articles %}
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
-                  {{ section.name }}
+                <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{ topic.title }}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  {% for article in section.articles %}
-                    <a class="dropdown-item" href="{{ article.link }}">{{ article.name }}</a>
+                  {% for article in topic.articles %}
+                    <a class="dropdown-item" href="/{{ article.source }}">{{ article.title }}</a>
                   {% endfor %}
                 </div>
               </li>

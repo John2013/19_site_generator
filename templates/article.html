@@ -1,10 +1,10 @@
 {% extends "_layouts/default.html" %}
-{% block title %}{{ article.name }} - Генератор сайтов{% endblock %}
+{% block title %}{{ article.title }} - Генератор сайтов{% endblock %}
 {% block content %}
   <div class="container">
     <div class="row">
       <section class="col article">
-        <h1>{{ section_name }} - {{ article.name }}</h1>
+        <h1>{{ article.topic }} - {{ article.title }}</h1>
         <div class="article__text">
           {% filter markdown %}
           {{ article.text }}
