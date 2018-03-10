@@ -17,7 +17,7 @@ Remember, it is recommended to use [virtualenv/venv](https://devman.org/encyclop
 
 `.md` files must be in `articles/<section_name>/` folder.
 
-*Section names* and *articles names* must be named like `<sort_number>_<name>`
+*Topics* and *articles* must be set in `config.json` file.
 
 
 # How to run local server
