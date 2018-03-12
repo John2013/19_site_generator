@@ -40,7 +40,7 @@ def create_page(page_html, path):
 
 # app.wsgi_app = ProxyFix(app.wsgi_app)
 if __name__ == "__main__":
-    os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), '.'))
+    os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'docs'))
     create_page(index(), 'index.html')
 
     config = read_config()
