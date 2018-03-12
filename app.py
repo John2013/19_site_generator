@@ -40,19 +40,19 @@ def create_page(page_html, path):
 
 # app.wsgi_app = ProxyFix(app.wsgi_app)
 if __name__ == "__main__":
-    os.chdir(os.path.dirname(os.path.abspath(__file__)))
+    os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), '.'))
     create_page(index(), 'index.html')
 
     config = read_config()
     for article in config['articles']:
-        dirname, filename = article['source'].split('/')
+        dirname, filename = article['source'].split('/', 1)
         filename = '{}.html'.format(filename.rsplit('.', 1)[0])
-        # try:
-        #     os.stat(dirname)
-        # except FileNotFoundError:
-        #     os.mkdir(dirname)
+        try:
+            os.stat(dirname)
+        except FileNotFoundError:
+            os.mkdir(dirname)
         html = article_page(dirname, filename)
         create_page(
             html,
-            filename
+            '{}/{}'.format(dirname, filename)
         )

@@ -9,7 +9,7 @@ def read_config(path=None):
     with open(path, encoding="utf-8") as config_file:
         config = json.loads(config_file.read())
         for article in config['articles']:
-            article['link'] = '/{}.html'.format((article['source'].rsplit('/', 1)[1]).rsplit('.', 1)[0])
+            article['link'] = '{}.html'.format(article['source'].rsplit('.', 1)[0])
         return config
 
 
