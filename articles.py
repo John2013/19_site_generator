@@ -24,14 +24,18 @@ def get_topics(config=None):
     return topics
 
 
+def get_files_text(path: str):
+    with open(path, encoding='utf-8') as text_file:
+        return text_file.read()
+
+
 def get_article(config, article_source, articles_dir_path=None):
     if articles_dir_path is None:
         articles_dir_path = join(dirname(abspath(__file__)), 'articles')
     for article in config['articles']:
         if article['source'] == article_source:
-            with open(join(articles_dir_path, article['source']), encoding='utf-8') as article_file:
-                article['text'] = article_file.read()
-                return article
+            article['text'] = get_files_text(join(articles_dir_path, article['source']))
+            return article
 
 
 if __name__ == "__main__":
