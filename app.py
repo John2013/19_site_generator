@@ -54,5 +54,5 @@ if __name__ == "__main__":
         html = article_page(dirname, filename)
         create_page(
             html,
-            '{}/{}'.format(dirname, filename)
+            filename
         )
