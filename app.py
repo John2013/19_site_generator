@@ -1,22 +1,25 @@
-from flask import Flask, render_template
-from flaskext.markdown import Markdown
-from werkzeug.contrib.fixers import ProxyFix
 
 from articles import get_topics, read_config, get_article
+import os
+from jinja2 import Environment, FileSystemLoader
 
-app = Flask(__name__)
-Markdown(app)
+
+def render_template(template_filename, **context):
+    path = os.path.dirname(os.path.abspath(__file__))
+    template_enviroment = Environment(
+        autoescape=False,
+        loader=FileSystemLoader(os.path.join(path, 'templates')),
+        trim_blocks=False
+    )
+    return template_enviroment.get_template(template_filename).render(**context)
 
 
-@app.route("/")
-@app.route("/index")
 def index():
     config = read_config()
     topics = get_topics(config)
     return render_template("index.html", topics=topics)
 
 
-@app.route("/<topic_dir>/<article_filename>")
 def article_page(topic_dir, article_filename):
     article_source = '{}/{}'.format(topic_dir, article_filename)
     config = read_config()
@@ -30,6 +33,26 @@ def article_page(topic_dir, article_filename):
     )
 
 
-app.wsgi_app = ProxyFix(app.wsgi_app)
+def create_page(page_html, path):
+    with open(path, mode='w', encoding='utf-8') as page_file:
+        page_file.write(page_html)
+
+
+# app.wsgi_app = ProxyFix(app.wsgi_app)
 if __name__ == "__main__":
-    app.run()
+    os.chdir(os.path.dirname(os.path.abspath(__file__)))
+    create_page(index(), 'index.html')
+
+    config = read_config()
+    for article in config['articles']:
+        dirname, filename = article['source'].split('/')
+        filename = '{}.html'.format(filename.rsplit('.', 1)[0])
+        try:
+            os.stat(dirname)
+        except FileNotFoundError:
+            os.mkdir(dirname)
+        html = article_page(dirname, filename)
+        create_page(
+            html,
+            '{}/{}'.format(dirname, filename)
+        )
