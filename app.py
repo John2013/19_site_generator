@@ -47,12 +47,12 @@ if __name__ == "__main__":
     for article in config['articles']:
         dirname, filename = article['source'].split('/')
         filename = '{}.html'.format(filename.rsplit('.', 1)[0])
-        try:
-            os.stat(dirname)
-        except FileNotFoundError:
-            os.mkdir(dirname)
+        # try:
+        #     os.stat(dirname)
+        # except FileNotFoundError:
+        #     os.mkdir(dirname)
         html = article_page(dirname, filename)
         create_page(
             html,
-            '{}/{}'.format(dirname, filename)
+            filename
         )
