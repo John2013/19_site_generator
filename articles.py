@@ -7,7 +7,10 @@ def read_config(path=None):
     if path is None:
         path = join(dirname(abspath(__file__)), 'config.json')
     with open(path, encoding="utf-8") as config_file:
-        return json.loads(config_file.read())
+        config = json.loads(config_file.read())
+        for article in config['articles']:
+            article['link'] = '/{}.html'.format(article['source'].rsplit('.', 1)[0])
+        return config
 
 
 def get_topic_articles(config, topic_slug):
