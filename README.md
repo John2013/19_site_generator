@@ -1,8 +1,8 @@
 # Encyclopedia
 
-Site showing `.md` files as `html` pages
+Generate `html` pages from `.md` files
 
-https://devmanopedia.herokuapp.com/
+https://john2013.github.io/19_site_generator/
 
 # How to install
 
@@ -15,19 +15,17 @@ pip install -r requirements.txt # alternatively try pip3
 
 Remember, it is recommended to use [virtualenv/venv](https://devman.org/encyclopedia/pip/pip_virtualenv/) for better isolation.
 
-`.md` files must be in `articles/<section_name>/` folder.
-
-*Topics* and *articles* must be set in `config.json` file.
 
 
-# How to run local server
+# How to build site
 
 ```bash
 python app.py
 ```
 
-Then open http://127.0.0.1:5000
+`.md` files must be in `articles/<section_name>/` folder.
 
+*Topics* and *articles* must be set in `config.json` file.
 
 # Project Goals
 
