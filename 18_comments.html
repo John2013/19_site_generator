@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  
+    <title>Комментарии - Генератор сайтов</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+
+  
+</head>
+<body>
+<header>
+  
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <span class="navbar-brand mb-0 h1">Генератор сайтов</span>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          
+            
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Арсенал
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  
+                    <a class="dropdown-item" href="14_google.html">Гугл</a>
+                  
+                    <a class="dropdown-item" href="27_devman.html">Девман</a>
+                  
+                    <a class="dropdown-item" href="29_english.html">Английский</a>
+                  
+                    <a class="dropdown-item" href="7_codenvy.html">Кодэнви</a>
+                  
+                    <a class="dropdown-item" href="8_cli.html">Консоль</a>
+                  
+                    <a class="dropdown-item" href="9_git.html">Гит и Гитхаб</a>
+                  
+                </div>
+              </li>
+            
+          
+            
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Основы Питона
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  
+                    <a class="dropdown-item" href="10_pep8.html">Стайлгайд</a>
+                  
+                    <a class="dropdown-item" href="18_comments.html">Комментарии</a>
+                  
+                    <a class="dropdown-item" href="1_intro.html">Зачем нужен Питон</a>
+                  
+                    <a class="dropdown-item" href="2_base_types.html">Основные типы данных</a>
+                  
+                    <a class="dropdown-item" href="3_base_constructions.html">Основные конструкции</a>
+                  
+                    <a class="dropdown-item" href="4_types.html">Типы данных</a>
+                  
+                    <a class="dropdown-item" href="5_modules.html">Модули</a>
+                  
+                    <a class="dropdown-item" href="6_tips_and_tricks.html">Полезные приёмы</a>
+                  
+                </div>
+              </li>
+            
+          
+            
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  HTML
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  
+                    <a class="dropdown-item" href="special &amp; symbol.html">Специальный символ &amp;</a>
+                  
+                    <a class="dropdown-item" href="html_injection.html">Взлом с помощью </body></a>
+                  
+                </div>
+              </li>
+            
+          
+            
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Гит
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  
+                    <a class="dropdown-item" href="22_git_history.html">История</a>
+                  
+                </div>
+              </li>
+            
+          
+        </ul>
+      </div>
+    </nav>
+  
+</header>
+<main>
+  
+  <div class="container">
+    <div class="row">
+      <section class="col article">
+        <h1>python_basics - Комментарии</h1>
+        <div class="article__text">
+
+          <h2>Какие бывают</h2>
+<h3>Обычные комментарии</h3>
+<p>Комментарии – способ прокомментировать код на ходу, на той же строке. </p>
+<pre><code>:::python
+price = Column(BigInteger)  # рубли * 100
+</code></pre>
+<h3>Докстринги</h3>
+<p>Докстринг – строковая переменная, которая идёт сразу за объявлением функции, класса, метода или модуля.
+Она нужна для документирования всей функции: описания входящих параметров, результата, логики, крайних случаев.
+Заключается в тройные двойные кавычки. Вот так:</p>
+<pre><code>:::python
+def tensorsolve(a, b, axes=None):
+    """
+    Solve the tensor equation ``a x = b`` for x.
+    It is assumed that all indices of `x` are summed over in the product,
+    together with the rightmost indices of `a`, as is done in, for example,
+    ``tensordot(a, x, axes=len(b.shape))``.
+    """
+</code></pre>
+<p>В серьёзных проектах из них часто генерируется документация, поэтому они могут быть большими, по несколько экранов.
+Это касается проектов, у которых есть документация для разработчиков: Django, numpy, sqlalchemy.</p>
+<p>Если проект не подразумевает, что им будут пользоваться другие разработчики, такого быть не должно.
+Длинных докстрингов не должно быть в скрипте ресайза изображений, сайте блога или алгоритме обучения нейронной сети.</p>
+<p>Прямо в докстрингах можно писать короткие тесты, их называют доктесты. Ни разу не видел, чтобы кто-то
+это использовал в боевом проекте.</p>
+<h2>Как не использовать</h2>
+<h3>Дублировать информацию из кода</h3>
+<p>Самая частая ошибка, связанная с комментариями: дублирование информации.
+В таком случае комментарий не несёт дополнительной информации, а просто переводит соседний код
+с Питона на русский/английский. Пример:</p>
+<pre><code>:::python
+# загружаем данные из файла data.json
+with open('users.json', 'r') as handler:
+    data = json.load(handler)
+</code></pre>
+<p>Вот как можно исправить:</p>
+<pre><code>:::python
+with open('users.json', 'r') as handler:
+    data = json.load(handler)
+</code></pre>
+<p>А так – ещё лучше:</p>
+<pre><code>:::python
+data = load_all_users_from_file()
+</code></pre>
+<h3>Не сопровождать комментарии</h3>
+<p>Другая частая ошибка: не менять комментарии при изменении кода. В примере выше мы загружали данные из файла. 
+Через месяц взялись за голову и поселили данные в базе данных. Код стал таким:</p>
+<pre><code>:::python
+# загружаем данные из файла data.json
+data = db_session.query(User).all()
+</code></pre>
+<p>Данные из файла? WAT?</p>
+<h3>Думать, что все поймут</h3>
+<p>Когда программист пишет кусок кода, он глубоко в него погружён: держит в голове все детали, связи и особые случаи.
+В таком состоянии всё поведение кажется понятным, поэтому разработчик может оставить комментарий самому себе.
+Проблема в том, что когда он переключится на другую задачу и забудет про детали, комментарий может взорвать мозг:</p>
+<pre><code>:::python
+inv(strain_tensor) - rigidity.T  # правый случай
+</code></pre>
+<p>Правый, правда? Ну, теперь всё понятно.</p>
+<h3>Шутить</h3>
+<p>Шутки к неидеальному коду смотрятся неуместно. Представь, как чувствует себя разработчик, копающийся в чужом
+коде три часа и находящий новый модуль с заглавным комментарием <code>оставь надежду, всяк сюда входящий</code>.
+Не будь автором этого комментария. Лучше наведи порядок в своём коде.</p>
+<h2>Как использовать</h2>
+<p>Вот хорошие причины использовать комментарии:</p>
+<ul>
+<li><em>объяснить неочевидное поведение</em>: бывает, что нужно объяснить какой-нибудь подводный камень куска кода
+  или объяснить поведение в особом случае; использовать только если ту же информацию в коде поселить нельзя или
+  очень сложно;</li>
+<li><em>оставить напоминание себе или коллеге</em>: речь про комментарии вроде <code>TODO: кешировать ответ ручки</code>
+  или <code>FIXME: учитывать часовой пояс</code>.</li>
+</ul>
+<p>Прежде чем написать комментарий, попробуй поселить его в коде, указав параметр или дав подходящее название переменной.</p>
+<h2>Что изучать</h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=-SRUctRR_4s">Доклад Григория Петрова про комментирование исходников</a>. Обязателен к просмотру.</li>
+<li><a href="https://www.python.org/dev/peps/pep-0257/">PEP 257</a>. ПЕП про докстринги.</li>
+<li><a href="https://docs.python.org/3.5/library/doctest.html">doctest</a>. Документация к модулю про доктесты.</li>
+<li><a href="http://stackoverflow.com/questions/184618/">What is the best comment in source code you have ever encountered?</a>. Шутить в коде не стоит, а вот посмеяться с чужих шуток можно. Это ж не нам поддерживать.</li>
+</ul>
+
+        </div>
+      </section>
+    </div>
+  </div>
+
+</main>
+
+
+<footer>
+  
+
+  
+</footer>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+          integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+          crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+          integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+          crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+          integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+          crossorigin="anonymous"></script>
+
+
+</body>
+</html>
