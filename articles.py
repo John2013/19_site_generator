@@ -12,7 +12,9 @@ def read_config(path=None):
         zero = 0
         one = 1
         for article in config['articles']:
-            article['link'] = '{}.html'.format((article['source'].rsplit('/', one)[one]).rsplit('.', one)[zero])
+            article['link'] = '{}.html'.format(
+                (article['source'].rsplit('/', one)[one]).rsplit('.', one)[zero]
+            )
         return config
 
 
