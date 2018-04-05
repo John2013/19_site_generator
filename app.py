@@ -46,7 +46,7 @@ if __name__ == "__main__":
 
     config = read_config()
     for article in config['articles']:
-        dirname, filename = article['source'].split('/', 1)
+        dirname, filename = article['source'].split('/', one)
         # try:
         #     os.stat(dirname)
         # except FileNotFoundError:
