@@ -42,6 +42,7 @@ def create_page(page_html, path):
 if __name__ == "__main__":
     os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), '.'))
     create_page(index(), 'index.html')
+    zero, one = 0, 1
 
     config = read_config()
     for article in config['articles']:
@@ -51,7 +52,7 @@ if __name__ == "__main__":
         # except FileNotFoundError:
         #     os.mkdir(dirname)
         html = article_page(dirname, filename)
-        filename = '{}.html'.format(filename.rsplit('.', 1)[0])
+        filename = '{}.html'.format(filename.rsplit('.', one)[zero])
         create_page(
             html,
             filename
