@@ -22,9 +22,7 @@ def get_topic_articles(config, topic_slug):
     return list(filter(lambda article: article['topic'] == topic_slug, config['articles']))
 
 
-def get_topics(config=None):
-    if config is None:
-        config = read_config()
+def get_topics(config):
     topics = []
     for topic in config['topics']:
         topic['articles'] = get_topic_articles(config, topic['slug'])
