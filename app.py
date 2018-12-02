@@ -41,14 +41,18 @@ def create_page(page_html, path):
 if __name__ == "__main__":
     os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), '.'))
     config = read_config()
-    create_page(index(config), 'index.html')
+    results_dir = 'docs'
+    create_page(index(config), '{}/index.html'.format(results_dir))
     zero, one = 0, 1
 
     for article in config['articles']:
         dirname, filename = article['source'].split('/', one)
 
         html = article_page(dirname, filename, config)
-        filename = '{}.html'.format(filename.rsplit('.', one)[zero])
+        filename = '{dir}/{article_name}.html'.format(
+            article_name=filename.rsplit('.', one)[zero],
+            dir=results_dir
+        )
         create_page(
             html,
             filename
