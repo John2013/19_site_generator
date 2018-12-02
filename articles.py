@@ -32,19 +32,20 @@ def read_config(path=None):
             'config.json'
         )
     splint_count = 1
-    article_names_number = 1
+    article_names_num = 1
     article_name_without_exstention_number = 0
     with open(path, encoding="utf-8") as config_file:
         config = json.loads(config_file.read())
         for article in config['articles']:
-            article_name = urllib.parse.quote((
-                article['source'].rsplit('/', splint_count)[
-                    article_names_number
-                ]
+
+            article_name = (
+                article['source'].rsplit('/', splint_count)[article_names_num]
             ).rsplit(
                 '.',
                 splint_count
-            )[article_name_without_exstention_number])
+            )[article_name_without_exstention_number]
+
+            article_name = urllib.parse.quote(article_name)
 
             article['link'] = '{}.html'.format(article_name)
             article['title'] = html_special_chars(article['title'])
