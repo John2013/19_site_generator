@@ -33,7 +33,7 @@ def read_config(path=None):
         )
     splint_count = 1
     article_names_num = 1
-    article_name_without_exstention_number = 0
+    article_name_without_extension_number = 0
     with open(path, encoding="utf-8") as config_file:
         config = json.loads(config_file.read())
         for article in config['articles']:
@@ -43,7 +43,7 @@ def read_config(path=None):
             ).rsplit(
                 '.',
                 splint_count
-            )[article_name_without_exstention_number]
+            )[article_name_without_extension_number]
 
             article_name = urllib.parse.quote(article_name)
 
