@@ -15,14 +15,12 @@ def render_template(template_filename, **context):
 
 
 def index(config):
-    # config = read_config()
     topics = get_topics(config)
     return render_template("index.html", topics=topics)
 
 
 def article_page(topic_dir, article_filename, config):
     article_source = '{}/{}'.format(topic_dir, article_filename)
-    # config = read_config()
     topics = get_topics(config)
     article = get_article(config, article_source)
 
@@ -38,7 +36,6 @@ def create_page(page_html, path):
         page_file.write(page_html)
 
 
-# app.wsgi_app = ProxyFix(app.wsgi_app)
 if __name__ == "__main__":
     os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), '.'))
     config = read_config()
@@ -47,10 +44,7 @@ if __name__ == "__main__":
 
     for article in config['articles']:
         dirname, filename = article['source'].split('/', one)
-        # try:
-        #     os.stat(dirname)
-        # except FileNotFoundError:
-        #     os.mkdir(dirname)
+
         html = article_page(dirname, filename, config)
         filename = '{}.html'.format(filename.rsplit('.', one)[zero])
         create_page(
