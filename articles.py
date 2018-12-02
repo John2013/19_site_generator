@@ -4,6 +4,15 @@ from markdown import markdown
 import os
 
 
+def html_special_chars(text):
+    return text \
+        .replace(u"&", u"&amp;") \
+        .replace(u'"', u"&quot;") \
+        .replace(u"'", u"&#039;") \
+        .replace(u"<", u"&lt;") \
+        .replace(u">", u"&gt;")
+
+
 def read_config(path=None):
     if path is None:
         path = os.path.join(os.path.dirname(
@@ -14,13 +23,13 @@ def read_config(path=None):
         config = json.loads(config_file.read())
         for article in config['articles']:
             article_name = (
-                    article['source'].rsplit('/', 1)[1]
-                ).rsplit('.', 1)[0]
+                article['source'].rsplit('/', 1)[1]
+            ).rsplit('.', 1)[0]
 
             article['link'] = '{}.html'.format(article_name)
-        from pprint import pprint
-        pprint(config)
-        return config
+            article['title'] = html_special_chars(article['title'])
+
+    return config
 
 
 def get_topic_articles(config, topic_slug):
