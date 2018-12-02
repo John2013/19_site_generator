@@ -1,4 +1,6 @@
 import json
+import urllib
+
 from markdown import markdown
 
 import os
@@ -32,9 +34,9 @@ def read_config(path=None):
     with open(path, encoding="utf-8") as config_file:
         config = json.loads(config_file.read())
         for article in config['articles']:
-            article_name = (
+            article_name = urllib.parse.quote((
                 article['source'].rsplit('/', 1)[1]
-            ).rsplit('.', 1)[0]
+            ).rsplit('.', 1)[0])
 
             article['link'] = '{}.html'.format(article_name)
             article['title'] = html_special_chars(article['title'])
