@@ -6,20 +6,27 @@ import os
 
 def read_config(path=None):
     if path is None:
-        path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config.json')
+        path = os.path.join(os.path.dirname(
+            os.path.abspath(__file__)),
+            'config.json'
+        )
     with open(path, encoding="utf-8") as config_file:
         config = json.loads(config_file.read())
         zero = 0
         one = 1
         for article in config['articles']:
             article['link'] = '{}.html'.format(
-                (article['source'].rsplit('/', one)[one]).rsplit('.', one)[zero]
+                (
+                    article['source'].rsplit('/', one)[one]
+                ).rsplit('.', one)[zero]
             )
         return config
 
 
 def get_topic_articles(config, topic_slug):
-    return list(filter(lambda article: article['topic'] == topic_slug, config['articles']))
+    return list(filter(
+        lambda article: article['topic'] == topic_slug, config['articles']
+    ))
 
 
 def get_topics(config):
@@ -38,10 +45,15 @@ def get_files_md_text(path: str):
 
 def get_article(config, article_source, articles_dir_path=None):
     if articles_dir_path is None:
-        articles_dir_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'articles')
+        articles_dir_path = os.path.join(
+            os.path.dirname(os.path.abspath(__file__)),
+            'articles'
+        )
     for article in config['articles']:
         if article['source'] == article_source:
-            article['text'] = get_files_md_text(os.path.join(articles_dir_path, article['source']))
+            article['text'] = get_files_md_text(
+                os.path.join(articles_dir_path, article['source'])
+            )
             return article
 
 

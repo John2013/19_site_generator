@@ -11,7 +11,9 @@ def render_template(template_filename, **context):
         loader=FileSystemLoader(os.path.join(path, 'templates')),
         trim_blocks=False
     )
-    return template_enviroment.get_template(template_filename).render(**context)
+    return template_enviroment.get_template(template_filename).render(
+        **context
+    )
 
 
 def index(config):
