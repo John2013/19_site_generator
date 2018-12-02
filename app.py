@@ -43,14 +43,13 @@ if __name__ == "__main__":
     config = read_config()
     results_dir = 'docs'
     create_page(index(config), '{}/index.html'.format(results_dir))
-    zero, one = 0, 1
 
     for article in config['articles']:
-        dirname, filename = article['source'].split('/', one)
+        dirname, filename = article['source'].split('/', 1)
 
         html = article_page(dirname, filename, config)
         filename = '{dir}/{article_name}.html'.format(
-            article_name=filename.rsplit('.', one)[zero],
+            article_name=filename.rsplit('.', 1)[0],
             dir=results_dir
         )
         create_page(

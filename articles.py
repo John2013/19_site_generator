@@ -12,14 +12,14 @@ def read_config(path=None):
         )
     with open(path, encoding="utf-8") as config_file:
         config = json.loads(config_file.read())
-        zero = 0
-        one = 1
         for article in config['articles']:
-            article['link'] = '{}.html'.format(
-                (
-                    article['source'].rsplit('/', one)[one]
-                ).rsplit('.', one)[zero]
-            )
+            article_name = (
+                    article['source'].rsplit('/', 1)[1]
+                ).rsplit('.', 1)[0]
+
+            article['link'] = '{}.html'.format(article_name)
+        from pprint import pprint
+        pprint(config)
         return config
 
 
